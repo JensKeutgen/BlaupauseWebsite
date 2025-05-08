@@ -1,0 +1,156 @@
+/* Globale Variablen für Farben und Schriftarten (optional, aber hilfreich) */
+:root {
+    --primary-font: Arial, sans-serif;
+    --background-color: #f4f4f4;
+    --text-color: #333;
+    --header-bg: #333;
+    --header-text: #fff;
+    --footer-bg: #222;
+    --footer-text: #ccc;
+    --container-width: 960px;
+    --link-color: #007bff;
+    --link-hover-color: #0056b3;
+}
+
+body {
+    font-family: var(--primary-font);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    width: 80%;
+    max-width: var(--container-width);
+    margin: auto;
+    overflow: hidden;
+    padding: 0 20px;
+}
+
+/* Header */
+header {
+    background: var(--header-bg);
+    color: var(--header-text);
+    padding: 1rem 0;
+    border-bottom: #0779e4 3px solid; /* Allgemeine Akzentfarbe für den Header-Bottom-Border */
+}
+
+header a.logo {
+    color: var(--header-text);
+    text-decoration: none;
+    font-size: 1.5rem;
+    float: left;
+}
+
+header nav {
+    float: right;
+}
+
+header nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+header nav ul li {
+    display: inline;
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    color: var(--header-text);
+    text-decoration: none;
+    font-size: 1rem;
+    padding-bottom: 5px; /* Platz für den unteren Rand bei Hover/Active */
+}
+
+header nav ul li a:hover,
+header nav ul li a.active {
+    /* Standard-Hover-Effekt, wird durch Theme-CSS überschrieben */
+    border-bottom: 2px solid var(--header-text);
+}
+
+/* Main Content Area */
+main {
+    flex: 1; /* Sorgt dafür, dass der Footer unten bleibt */
+    padding: 20px 0;
+}
+
+main h1 {
+    margin-bottom: 20px;
+}
+
+/* Footer */
+footer {
+    background: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: auto; /* Stellt sicher, dass der Footer am unteren Rand ist */
+}
+
+footer ul {
+    padding: 0;
+    list-style: none;
+}
+
+footer ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+footer ul li a {
+    color: var(--footer-text);
+    text-decoration: none;
+}
+
+footer ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Links */
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+}
+
+/* Clearfix für Floats im Header */
+header .container::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive Design für kleine Bildschirme (optional, aber empfohlen) */
+@media(max-width: 768px) {
+    header a.logo {
+        float: none;
+        text-align: center;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    header nav {
+        float: none;
+        text-align: center;
+    }
+
+    header nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .container {
+        width: 95%;
+    }
+}
