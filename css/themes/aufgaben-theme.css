@@ -1,0 +1,36 @@
+/* Aufgaben Theme - Orangetöne */
+
+/* Header-Anpassung für Aufgaben-Tab */
+.aufgaben-page header nav ul li a#nav-aufgaben.active,
+.aufgaben-page header nav ul li a#nav-aufgaben:hover {
+    border-bottom: 3px solid var(--aufgaben-accent-color);
+    color: var(--aufgaben-accent-color);
+}
+
+/* Allgemeine Elemente im Aufgaben-Bereich */
+.aufgaben-page h1 { /* Seitentitel */
+    color: var(--aufgaben-heading-color);
+}
+.aufgaben-page h2 { /* Kleinere Überschriften, nicht die in Karten */
+    color: var(--aufgaben-heading-color);
+}
+
+
+.aufgaben-page main a:not(.content-card) {
+    color: var(--aufgaben-accent-color);
+}
+
+.aufgaben-page main a:not(.content-card):hover {
+    color: var(--aufgaben-accent-hover-color);
+}
+
+/* Karten-Styling für Aufgaben-Seiten */
+.aufgaben-page .content-card {
+    border-top: 5px solid var(--aufgaben-accent-color);
+}
+.aufgaben-page .content-card:hover {
+    border-top-color: var(--aufgaben-accent-hover-color);
+}
+.aufgaben-page .content-card h2 { /* Spezifische Farbe für Kartenüberschriften im Aufgabenbereich */
+    color: var(--aufgaben-card-heading-color);
+}

@@ -1,0 +1,32 @@
+/* Stunden Theme - Grüntöne */
+
+/* Header-Anpassung für Stunden-Tab */
+.stunden-page header nav ul li a#nav-stunden.active,
+.stunden-page header nav ul li a#nav-stunden:hover {
+    border-bottom: 3px solid var(--stunden-accent-color);
+    color: var(--stunden-accent-color);
+}
+
+/* Allgemeine Elemente im Stunden-Bereich */
+.stunden-page h1, .stunden-page h2 {
+    color: var(--stunden-heading-color);
+}
+
+.stunden-page main a:not(.content-card) {
+    color: var(--stunden-accent-color);
+}
+
+.stunden-page main a:not(.content-card):hover {
+    color: var(--stunden-accent-hover-color);
+}
+
+/* Karten-Styling für Stunden-Seiten */
+.stunden-page .content-card {
+    border-top: 5px solid var(--stunden-accent-color);
+}
+.stunden-page .content-card:hover {
+    border-top-color: var(--stunden-accent-hover-color);
+}
+.stunden-page .content-card h2 {
+    color: var(--stunden-heading-color);
+}
