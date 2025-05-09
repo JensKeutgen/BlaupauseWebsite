@@ -3,13 +3,26 @@
     --primary-font: Arial, sans-serif;
     --background-color: #f4f4f4;
     --text-color: #333;
-    --header-bg: #333;
-    --header-text: #fff;
-    --footer-bg: #222;
-    --footer-text: #ccc;
+    /* --header-bg: #333; ALT */
+    /* --header-text: #fff; ALT */
+    /* --footer-bg: #222; ALT */
+    /* --footer-text: #ccc; ALT */
     --container-width: 960px;
     --link-color: #007bff;
     --link-hover-color: #0056b3;
+
+    /* NEUE Farbvariablen für Header, Footer und Akzente */
+    --main-accent-color: #151c1b;         /* Haupt-Akzentfarbe (Ihr aktuelles Header-Blau) */
+    --main-accent-color-darker: #001512;  /* Dunklere Variante für Hover, Footer etc. */
+    --main-accent-color-lighter: #003129; /* Hellere Variante für Hover-Effekte auf Text */
+
+    --header-bg-color: var(--main-accent-color);         /* Hintergrund Header */
+    --header-text-color: #ffffff;                        /* Textfarbe im Header */
+    --header-nav-hover-text-color: var(--main-accent-color-lighter); /* Textfarbe für Nav-Links bei Hover */
+
+    --footer-bg-color: var(--main-accent-color-darker); /* Hintergrund Footer (etwas dunkler) */
+    --footer-text-color: #e0e0e0;                        /* Textfarbe im Footer */
+    --footer-link-hover-color: #ffffff;                  /* Linkfarbe im Footer bei Hover */
 }
 
 body {
@@ -34,16 +47,18 @@ body {
 
 /* Header */
 header {
-    background: var(--header-bg);
-    color: var(--header-text);
+    background: var(--header-bg-color); /* Neue Hintergrundfarbe */
+    color: var(--header-text-color);
     padding: 1rem 0;
-    border-bottom: #0779e4 3px solid; /* Allgemeine Akzentfarbe für den Header-Bottom-Border */
+    /* border-bottom: var(--main-accent-color-darker) 3px solid; */ /* Kann entfernt oder angepasst werden */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15); /* Leichter Schatten für Tiefe */
 }
 
 header a.logo {
-    color: var(--header-text);
+    color: var(--header-text-color);
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size: 1.7rem; /* Etwas präsenter */
+    font-weight: bold;
     float: left;
 }
 
@@ -59,39 +74,45 @@ header nav ul {
 
 header nav ul li {
     display: inline;
-    margin-left: 20px;
+    margin-left: 10px; /* Etwas weniger Margin, da Links jetzt Padding bekommen könnten */
 }
 
+/* Basis-Stil für Navigationslinks im Header */
 header nav ul li a {
-    color: var(--header-text);
+    color: var(--header-text-color);
     text-decoration: none;
     font-size: 1rem;
-    padding-bottom: 5px; /* Platz für den unteren Rand bei Hover/Active */
+    padding: 0.6em 0.4em; /* Vertikales und horizontales Padding */
+    border-bottom: 3px solid transparent; /* Platzhalter für Akzent-Border der Themes */
+    transition: color 0.2s ease, background-color 0.2s ease, border-bottom-color 0.2s ease;
+    border-radius: 4px; /* Für abgerundeten Hintergrund bei Theme-Hover/Active */
 }
 
-header nav ul li a:hover,
+/* Allgemeiner Hover-Effekt für Navigationslinks im Header (wird von Themes ggf. überschrieben) */
+header nav ul li a:hover {
+    color: var(--header-nav-hover-text-color); /* Text heller bei Hover */
+    background-color: rgba(255,255,255,0.05); /* Sehr dezenter Hintergrund-Hover */
+}
+
+/* Allgemeiner Active-Stil (Fallback, wird von Themes überschrieben) */
 header nav ul li a.active {
-    /* Standard-Hover-Effekt, wird durch Theme-CSS überschrieben */
-    border-bottom: 2px solid var(--header-text);
-}
-
-/* Main Content Area */
-main {
-    flex: 1; /* Sorgt dafür, dass der Footer unten bleibt */
-    padding: 20px 0;
-}
-
-main h1 {
-    margin-bottom: 20px;
+    font-weight: bold;
+    /* Die Themes sollten hier den Stil definieren */
 }
 
 /* Footer */
 footer {
-    background: var(--footer-bg);
-    color: var(--footer-text);
+    background: var(--footer-bg-color); /* Neue Hintergrundfarbe */
+    color: var(--footer-text-color);
     text-align: center;
-    padding: 1.5rem 0;
+    padding: 2rem 0; /* Mehr Padding */
     margin-top: auto; /* Stellt sicher, dass der Footer am unteren Rand ist */
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1); /* Optional: Leichter Schatten nach oben */
+}
+
+footer p { /* Copyright-Text etwas abheben */
+    margin-bottom: 0.8em;
+    font-size: 0.9rem;
 }
 
 footer ul {
@@ -101,56 +122,202 @@ footer ul {
 
 footer ul li {
     display: inline;
-    margin: 0 10px;
+    margin: 0 12px; /* Etwas mehr Abstand */
 }
 
 footer ul li a {
-    color: var(--footer-text);
+    color: var(--footer-text-color);
     text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
 }
 
 footer ul li a:hover {
+    color: var(--footer-link-hover-color); /* Weiß bei Hover */
     text-decoration: underline;
 }
+/* Am Ende von css/style.css hinzufügen oder bestehende anpassen */
 
-/* Links */
-a {
-    color: var(--link-color);
+/* Globale Variablen für Farben und Schriftarten (Ergänzung) */
+:root {
+    --primary-font: Arial, sans-serif;
+    --background-color: #f4f4f4;
+    --text-color: #333;
+    --header-bg: #333;
+    --header-text: #fff;
+    --footer-bg: #222;
+    --footer-text: #ccc;
+    --container-width: 960px;
+    --link-color: #007bff;
+    --link-hover-color: #0056b3;
+
+    /* Theme-Akzentfarben */
+    --skript-accent-color: #4a90e2; /* Blau */
+    --skript-accent-hover-color: #357ABD;
+    --skript-heading-color: #2a67a2;
+
+    --stunden-accent-color: #5cb85c; /* Grün */
+    --stunden-accent-hover-color: #4cae4c;
+    --stunden-heading-color: #3a8a5f;
+
+    --aufgaben-accent-color: #f0ad4e; /* Orange */
+    --aufgaben-accent-hover-color: #ec971f;
+    --aufgaben-heading-color: #d9534f; /* Rot-Orange für Überschriften in Aufgaben */
+    --aufgaben-card-heading-color: #c75c00; /* Dunkleres Orange für Kartenüberschriften */
+}
+
+/* ... (Restlicher bestehender Code von style.css) ... */
+
+/* Button Grid für Übersichtsseiten */
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive Spalten */
+    gap: 25px; /* Abstand zwischen den Karten */
+    padding: 20px 0;
+}
+
+.content-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 25px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out, border-color 0.25s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 180px; /* Etwas mehr Höhe */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.content-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
     text-decoration: none;
 }
 
-a:hover {
-    color: var(--link-hover-color);
-    text-decoration: underline;
+.content-card h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.6rem;
+    /* Die Farbe wird durch das jeweilige Theme-CSS weiter unten definiert */
 }
 
-/* Clearfix für Floats im Header */
-header .container::after {
-    content: "";
-    display: table;
-    clear: both;
+.content-card p {
+    font-size: 0.95rem;
+    color: #555;
+    flex-grow: 1;
+    margin-bottom: 0;
 }
 
-/* Responsive Design für kleine Bildschirme (optional, aber empfohlen) */
-@media(max-width: 768px) {
-    header a.logo {
-        float: none;
-        text-align: center;
-        display: block;
-        margin-bottom: 10px;
-    }
-
-    header nav {
-        float: none;
-        text-align: center;
-    }
-
-    header nav ul li {
-        display: block;
-        margin: 10px 0;
-    }
-
-    .container {
-        width: 95%;
-    }
+/* Spezifische Stile für Links innerhalb von Karten, falls nötig */
+.content-card a {
+    text-decoration: none;
 }
+
+/* Die Akzent-Randfarben für die Karten werden in den Theme-Dateien definiert, z.B. mit border-top */
+/* Info-Banner auf der Startseite */
+.info-banner {
+    background-color: #e9f2fa; /* Heller Blauton, passend zum Skript-Theme als Beispiel */
+    border: 1px solid #c5d9e8;
+    border-left: 5px solid #4a90e2; /* Akzentfarbe links (Skript-Blau) */
+    padding: 20px 25px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.info-banner h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #2a67a2; /* Dunklerer Blauton für die Überschrift im Banner */
+    font-size: 1.6rem;
+}
+
+.info-banner p {
+    margin-bottom: 10px;
+}
+
+.info-banner p:last-child {
+    margin-bottom: 0;
+}
+
+.info-banner a {
+    color: #357ABD; /* Etwas dunkleres Blau für Links im Banner */
+    font-weight: bold;
+}
+.info-banner a:hover {
+    color: #2a67a2;
+}
+
+/* Schnellzugriff-Sektion */
+.quick-access-section {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid #e0e0e0; /* Leichte Trennlinie */
+}
+
+.quick-access-section > h2 { /* Hauptüberschrift für Schnellzugriff */
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    color: var(--text-color);
+}
+
+.quick-access-subsection {
+    margin-bottom: 40px;
+}
+
+.quick-access-subsection h3 { /* Überschriften für "Letzte Stunden" / "Letzte Aufgaben" */
+    font-size: 1.5rem;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #efefef;
+}
+
+/* Spezifische Karten-Stile für den Schnellzugriff auf der Startseite */
+/* Diese nutzen die Farben, die in den jeweiligen Themes angedeutet sind.
+   Sie können diese Farben hier direkt anpassen. */
+
+.quick-access-subsection .content-card {
+    /* Ggf. allgemeine Anpassungen für Karten im Schnellzugriff,
+       z.B. etwas kleiner, falls gewünscht. Aktuell nutzen sie die globalen .content-card Stile. */
+}
+
+.quick-access-subsection .stunden-card-preview {
+    border-top: 5px solid #5cb85c; /* Grünton für Stunden */
+}
+.quick-access-subsection .stunden-card-preview:hover {
+    border-top-color: #4cae4c; /* Dunkleres Grün beim Hover */
+    transform: translateY(-3px); /* Leichter Schwebeeffekt */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.quick-access-subsection .stunden-card-preview h2 {
+    color: #3f7f3f; /* Passende Überschriftenfarbe */
+}
+
+.quick-access-subsection .aufgaben-card-preview {
+    border-top: 5px solid #f0ad4e; /* Orangeton für Aufgaben */
+}
+.quick-access-subsection .aufgaben-card-preview:hover {
+    border-top-color: #eea236; /* Dunkleres Orange beim Hover */
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.quick-access-subsection .aufgaben-card-preview h2 {
+    color: #c57d20; /* Passende Überschriftenfarbe */
+}
+
+/* Anpassung für .button-grid, falls nötig, um sicherzustellen, dass es mit 3 Elementen gut aussieht */
+/* Das existierende .button-grid (aus den Themes) sollte bereits responsiv sein.
+   Falls nicht, könnten Sie hier spezifische Anpassungen für die Startseite vornehmen:
+   .quick-access-section .button-grid {
+       display: grid;
+       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+       gap: 20px;
+   }
+*/

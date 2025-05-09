@@ -1,7 +1,4 @@
 /* Skript Theme - Blautöne */
-body.skript-page { /* Fügen Sie diese Klasse dem <body>-Tag auf Skript-Seiten hinzu oder selektieren Sie spezifischer */
-    /* Ggf. spezifische Hintergrundfarbe für den Content-Bereich des Skripts */
-}
 
 /* Header-Anpassung für Skript-Tab */
 #nav-skript.active,
@@ -15,10 +12,6 @@ header nav ul li a#nav-skript:hover {
     color: #2a67a2; /* Dunklerer Blauton für Überschriften */
 }
 
-.skript-page a {
-    color: #4a90e2;
-}
-
 .skript-page a:hover {
     color: #357ABD;
 }
@@ -27,6 +20,45 @@ header nav ul li a#nav-skript:hover {
 .interactive-box-skript {
     background-color: #e9f2fa;
     border-left: 5px solid #4a90e2;
+    padding: 15px;
+    margin: 20px 0;
+}
+/* Skript Theme - Blautöne */
+
+/* Header-Anpassung für Skript-Tab */
+.skript-page header nav ul li a#nav-skript.active,
+.skript-page header nav ul li a#nav-skript:hover {
+    border-bottom: 3px solid var(--skript-accent-color); /* Etwas dickerer Border */
+    color: var(--skript-accent-color);
+}
+
+/* Allgemeine Elemente im Skript-Bereich */
+.skript-page h1, .skript-page h2 { /* h1 für Seitentitel, h2 für Abschnitte */
+    color: var(--skript-heading-color);
+}
+
+.skript-page main a:not(.content-card) { /* Normale Links, nicht die Karten selbst */
+    color: var(--skript-accent-color);
+}
+
+.skript-page main a:not(.content-card):hover {
+    color: var(--skript-accent-hover-color);
+}
+
+/* Karten-Styling für Skript-Seiten */
+.skript-page .content-card {
+    border-top: 5px solid var(--skript-accent-color);
+}
+.skript-page .content-card:hover {
+    border-top-color: var(--skript-accent-hover-color); /* Stärkere Hervorhebung beim Hover */
+}
+.skript-page .content-card h2 {
+    color: var(--skript-heading-color);
+}
+
+.interactive-box-skript { /* Bestehendes Beispiel beibehalten/anpassen */
+    background-color: #e9f2fa;
+    border-left: 5px solid var(--skript-accent-color);
     padding: 15px;
     margin: 20px 0;
 }

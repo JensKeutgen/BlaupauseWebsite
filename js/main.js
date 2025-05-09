@@ -1,19 +1,67 @@
 // js/main.js
 
-// Beispiel: Aktiven Navigationslink hervorheben (Alternative zur reinen CSS-Lösung, falls komplexer)
-// Diese Version ist nicht zwingend notwendig, wenn die 'active' Klasse serverseitig/manuell im HTML gesetzt wird.
-// document.addEventListener('DOMContentLoaded', function() {
-//     const currentPath = window.location.pathname.split('/').pop();
-//     const navLinks = document.querySelectorAll('header nav ul li a');
+function getBasePath() {
+    const pathSegments = window.location.pathname.split('/');
+    // Grundpfad ist im Hauptverzeichnis
+    let basePath = '';
 
-//     navLinks.forEach(link => {
-//         const linkPath = link.getAttribute('href').split('/').pop();
-//         if (linkPath === currentPath || (currentPath === '' && link.getAttribute('href') === 'index.html')) {
-//             link.classList.add('active');
-//         }
-//     });
-// });
+    // Wenn wir uns in einem Unterverzeichnis befinden
+    if (pathSegments.length > 2) {
+        basePath = '../'.repeat(pathSegments.length - 2);
+    }
+    return basePath;
+ }
 
-// Hier könnten weitere globale Skripte stehen, z.B. für ein mobiles Menü, Cookie-Banner (obwohl Sie keine Cookies wollen) etc.
-// Da Sie keine externen Server und unnötige Cookies anstreben, halten Sie dies minimal.
-console.log("Haupt-JavaScript geladen.");
+ function loadHeaderAndFooter() {
+    const basePath = getBasePath();
+
+    fetch(basePath + 'header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.querySelector('header').innerHTML = data;
+            // Nach dem Laden des Headers: Navigation anpassen
+            adjustHeaderNavLinks(basePath);
+            highlightActiveNavLink(basePath);
+        });
+
+    fetch(basePath + 'footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.querySelector('footer').innerHTML = data;
+        });
+ }
+
+ function adjustHeaderNavLinks(basePath) {
+    const headerNavLinks = document.querySelectorAll('header nav ul li a');
+    headerNavLinks.forEach(link => {
+        let href = link.getAttribute('href');
+        // Passe den Linkpfad an, außer wenn es ein absoluter Pfad oder ein Anker ist
+        if (!href.startsWith('http') && !href.startsWith('#') && !href.startsWith('javascript:')) {
+            link.setAttribute('href', basePath + href);
+        }
+    });
+ }
+
+ function highlightActiveNavLink(basePath) {
+    const currentPath = window.location.pathname;
+    const navLinks = document.querySelectorAll('header nav ul li a');
+
+    navLinks.forEach(link => {
+        let linkPath = link.getAttribute('href');
+
+        // Normalisiere Pfade: Entferne "/index.html" am Ende, falls vorhanden
+        const normalizedCurrentPath = currentPath.endsWith('index.html') ? currentPath.slice(0, -10) : currentPath;
+        const normalizedLinkPath = linkPath.endsWith('index.html') ? linkPath.slice(0, -10) : linkPath;
+
+        // Vergleiche normalisierte Pfade
+        if (normalizedLinkPath === normalizedCurrentPath ||
+            (normalizedCurrentPath.endsWith('/') && normalizedLinkPath === normalizedCurrentPath.slice(0, -1)) ||
+            (normalizedLinkPath === basePath + 'index.html' && (normalizedCurrentPath === basePath || normalizedCurrentPath === basePath.slice(0, -1))) ||
+            (normalizedLinkPath === 'index.html' && normalizedCurrentPath === basePath.slice(0, -1))) {
+            link.classList.add('active');
+        }
+    });
+ }
+
+ // Laden von Header und Footer beim Laden der Seite
+ document.addEventListener('DOMContentLoaded', loadHeaderAndFooter);
