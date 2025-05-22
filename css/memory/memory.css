@@ -1,0 +1,109 @@
+/* styles/memory.css */
+
+/* Game Container (Optional for now) */
+.memory-game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
+
+/* Game Board */
+.memory-board {
+  display: grid;
+  grid-template-columns: repeat(4, 100px); /* Example: 4 columns, adjust as needed */
+  grid-gap: 10px;
+  margin-top: 20px;
+  perspective: 1000px; /* For 3D flip effect */
+}
+
+/* Memory Card */
+.memory-card {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  cursor: pointer;
+  background-color: #4CAF50; /* Default "back of card" color */
+  color: transparent; /* Hide text content when face down */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  border: 2px solid #333;
+  border-radius: 5px;
+}
+
+/* Flipped State - when card is clicked */
+.memory-card.flipped {
+  transform: rotateY(180deg);
+  background-color: #fff; /* Background color when flipped */
+  color: #333; /* Show text content when flipped */
+}
+
+/* Matched State - when a pair is found */
+.memory-card.matched {
+  border-color: #FFD700; /* Gold border for matched cards */
+  opacity: 0.7; /* Slightly transparent to indicate they are matched */
+  cursor: default; /* No pointer cursor for matched cards */
+}
+/* Ensure matched cards remain flipped */
+.memory-card.matched.flipped {
+    transform: rotateY(180deg); /* Keep it rotated */
+}
+
+
+/* Game Information Display */
+.game-info {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.moves-counter, .matched-pairs-counter {
+  margin: 5px 0;
+}
+
+/* Win Message */
+.win-message {
+  display: none; /* Initially hidden */
+  position: fixed; /* Or absolute, depending on desired effect */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 24px;
+}
+
+/* 
+  Alternative for card faces using separate divs (if chosen for implementation):
+  This approach is more flexible for different front/back styles (e.g., images)
+  If using this, .memory-card would be a container and .card-face would handle visual content.
+*/
+/*
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.card-front {
+  background: #f0f0f0; 
+  color: #333;
+  transform: rotateY(180deg); 
+}
+
+.card-back {
+  background: #4CAF50; 
+  color: white; 
+}
+*/
