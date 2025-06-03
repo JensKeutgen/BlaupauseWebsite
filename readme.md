@@ -24,7 +24,7 @@ Die Website ist in mehrere Hauptbereiche unterteilt:
         -   `skript-theme.css` (Blautöne)
         -   `stunden-theme.css` (Grüntöne)
         -   `aufgaben-theme.css` (Orangetöne)
-    - Der Header und Footer wird extern gespeichert und am Ende über main.js geladen
+    - Der Header und Footer werden extern gespeichert und am Ende über main.js geladen
 -   **JavaScript:**
     -   `js/main.js`: Für allgemeine, seitenübergreifende Skripte.
     -   Spezifische JS-Dateien im `js/`-Ordner (z.B. `quiz-script.js`, `interactive-element1.js`) sind für einzelne interaktive Elemente oder Funktionen gedacht. Diese sollten bei Bedarf in den entsprechenden HTML-Seiten eingebunden werden.
