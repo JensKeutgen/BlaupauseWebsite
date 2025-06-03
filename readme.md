@@ -27,7 +27,8 @@ Die Website ist in mehrere Hauptbereiche unterteilt:
     - Der Header und Footer wird extern gespeichert und am Ende über main.js geladen
 -   **JavaScript:**
     -   `js/main.js`: Für allgemeine, seitenübergreifende Skripte.
-    -   Spezifische JS-Dateien im `js/`-Ordner (z.B. `quiz-script.js`, `interactive-element1.js`) sind für einzelne interaktive Elemente oder Funktionen gedacht. Diese sollten bei Bedarf in den entsprechenden HTML-Seiten eingebunden werden.
+    -   `js/quiz.js`: Grundlegende Funktionen für einfache Multiple-Choice-Quizze.
+    -   Spezifische JS-Dateien im `js/`-Ordner (z.B. `interactive-element1.js`) sind für einzelne interaktive Elemente oder Funktionen gedacht. Diese sollten bei Bedarf in den entsprechenden HTML-Seiten eingebunden werden.
 
 ## Eine neue HTML-Seite erstellen (Anleitung für ein LLM oder menschliche Bearbeiter)
 
