@@ -101,6 +101,15 @@ Um eine neue HTML-Seite, zum Beispiel ein neues Thema im Skript-Bereich, hinzuzu
 10. **Testen:**
     * Öffnen Sie die neue HTML-Seite in einem Browser, um sicherzustellen, dass alles korrekt angezeigt wird und alle Links funktionieren.
 
+## Automatisierte Tests
+
+Für die mitgelieferte Beispiel-Testumgebung wird [Jest](https://jestjs.io/) verwendet.
+Nach der Installation der Abhängigkeiten mit `npm install` können Sie die Tests mit folgendem Befehl ausführen:
+
+```bash
+npm test
+```
+
 ## Deployment auf GitHub Pages
 
 1.  Stellen Sie sicher, dass Ihr Repository den oben beschriebenen Aufbau hat.

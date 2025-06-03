@@ -64,4 +64,9 @@ function getBasePath() {
  }
 
  // Laden von Header und Footer beim Laden der Seite
- document.addEventListener('DOMContentLoaded', loadHeaderAndFooter);
+document.addEventListener('DOMContentLoaded', loadHeaderAndFooter);
+
+// Export für Tests
+if (typeof module !== 'undefined') {
+    module.exports = { highlightActiveNavLink };
+}
