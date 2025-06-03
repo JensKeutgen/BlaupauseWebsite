@@ -321,3 +321,7 @@ footer ul li a:hover {
        gap: 20px;
    }
 */
+/* Quiz-Komponenten */
+.quiz-question { margin-bottom: 1em; }
+.quiz-result { margin-top: 1em; font-weight: bold; }
+
